@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="CoolFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#e2e2e2</item>
+        <item name="android:shadowRadius">2</item>
+        <item name="android:shadowColor">#000</item>
+    </style>
+
 </resources>
