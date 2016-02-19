@@ -5,4 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="grad1">#7A006C</color>
     <color name="grad2">#680273</color>
+    <color name="grad3">#A5B1F0</color>
+    <color name="grad4">#E3E7FF</color>
+    <color name="button1">#eeeeff</color>
+    <color name="button2">#ddddee</color>
 </resources>

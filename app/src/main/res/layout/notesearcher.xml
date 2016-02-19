@@ -1,22 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ListView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        </ListView>
+            <TextView
+                android:id="@+id/headertext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/CoolFont"
+                android:fontFamily="sans-serif"
+                android:text="Search Classes..."
+                android:textSize="45sp"
+                android:background="@drawable/gradientbg"/>
+
+            <ListView
+                android:id="@+id/mylistview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </ListView>
 
 
 
-    </LinearLayout>
+        </LinearLayout>
+
+
+    </RelativeLayout>
 
 
 
 
-</RelativeLayout>
+
+
+</android.support.v4.widget.DrawerLayout>

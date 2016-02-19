@@ -2,11 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="gobtech.normienotes">
 
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
@@ -21,6 +25,13 @@
         <activity
             android:name=".NoteViewer"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <activity android:name=".MainMenu"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <activity android:name=".NoteSearcher"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
     </application>
 
 </manifest>

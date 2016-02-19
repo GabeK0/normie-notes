@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true">
+        <shape>
+            <gradient
+                android:startColor="@color/button2"
+                android:endColor="@color/button1"
+                android:angle="45"
+                android:type="linear" />
+        </shape>
+
+
+    </item>
+
+
+
+    <item>
+        <shape>
+
+            <gradient
+                android:startColor="@color/button1"
+                android:endColor="@color/button2"
+                android:angle="45"
+                android:type="linear" />
+
+
+        </shape>
+    </item>
+
+</selector>

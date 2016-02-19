@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:background="@drawable/gradientbg2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/classname"
+            style="@style/CoolFont"
+            android:textColor="#222"
+            android:textSize="35sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="CS 420"/>
+
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:layout_marginRight="5dp"
+            android:src="#222"/>
+
+        <TextView
+            android:id="@+id/professorname"
+            android:layout_weight="1"
+            android:textColor="#222"
+            style="@style/CoolFont"
+            android:textSize="35sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scaffidi"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

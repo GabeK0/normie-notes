@@ -14,6 +14,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void submit(View view) {
-        startActivity(new Intent(this, NoteViewer.class));
+        startActivity(new Intent(this, MainMenu.class));
     }
 }
