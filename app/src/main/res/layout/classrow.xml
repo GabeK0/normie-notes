@@ -4,6 +4,7 @@
     android:background="@drawable/gradientbg2">
 
     <LinearLayout
+        android:id="@+id/classrowlinearlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
@@ -12,13 +13,14 @@
             android:id="@+id/classname"
             style="@style/CoolFont"
             android:textColor="#222"
-            android:textSize="35sp"
+            android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="CS 420"/>
+            android:layout_weight="3"
+            android:text="MTH 420"/>
 
         <ImageView
+
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:paddingTop="4dp"
@@ -28,15 +30,20 @@
 
         <TextView
             android:id="@+id/professorname"
-            android:layout_weight="1"
+            android:layout_weight="5"
             android:textColor="#222"
             style="@style/CoolFont"
-            android:textSize="35sp"
-            android:layout_width="wrap_content"
+            android:textSize="30sp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Scaffidi"/>
+            android:text="Scafffffffi"/>
 
     </LinearLayout>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/classrowlinearlayout"
+        android:src="#111" />
 
 </RelativeLayout>

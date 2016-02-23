@@ -12,14 +12,21 @@
             android:orientation="vertical">
 
             <TextView
+                android:gravity="center"
                 android:id="@+id/headertext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/CoolFont"
+                android:textColor="#111"
                 android:fontFamily="sans-serif"
                 android:text="Search Classes..."
                 android:textSize="45sp"
-                android:background="@drawable/gradientbg"/>
+                android:background="@drawable/notesearchertopbg"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:src="#111"/>
 
             <ListView
                 android:id="@+id/mylistview"
