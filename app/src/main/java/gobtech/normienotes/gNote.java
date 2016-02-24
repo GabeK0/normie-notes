@@ -1,5 +1,7 @@
 package gobtech.normienotes;
 
+import android.util.Log;
+
 import java.util.Date;
 
 /**
@@ -8,25 +10,25 @@ import java.util.Date;
 
 public class gNote {
 
-    private int classNum;
     private String className;
     private String professor;
     private String noteTitle;
+    private String author;
     private String noteText;
     private Date date;
+    private long unixDate;
 
-    public gNote(int classNum, String className, String professor, String noteTitle, String noteText, Date date) {
-        this.classNum = classNum;
+    public gNote(String className, String professor, String noteTitle, String author, String noteText, long initDate) {
         this.className = className;
         this.professor = professor;
         this.noteTitle = noteTitle;
+        this.author = author;
         this.noteText = noteText;
-        this.date = date;
-    }
 
+        this.unixDate = initDate;
 
-    public int getClassNum() {
-        return classNum;
+        date = new Date(unixDate*1000);
+
     }
 
     public String getClassName() {
@@ -39,6 +41,10 @@ public class gNote {
 
     public String getNoteTitle() {
         return noteTitle;
+    }
+
+    public String getAuthor() {
+        return author;
     }
 
     public String getNoteText() {

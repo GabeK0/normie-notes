@@ -1,8 +1,10 @@
 package gobtech.normienotes;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 
 import com.android.volley.Request;
@@ -25,10 +27,11 @@ import java.util.ArrayList;
 public class NoteSearcher extends Activity {
 
     JSONObject myObj;
-    JSONArray classes;
-    ArrayList<gClass> arrayOfUsers;
-    ClassAdapter adapter;
-
+    //JSONArray classes;
+    ArrayList<gClass> arrayOfClasses;
+    ArrayList<gNote> arrayOfNotes;
+    ClassAdapter classAdapter;
+    NoteAdapter noteAdapter;
 
     private StringRequest getClasses() {
         return new StringRequest(Request.Method.GET, "http://web.engr.oregonstate.edu/~braune/NormieNotes/JSON/combos.php",
@@ -39,16 +42,16 @@ public class NoteSearcher extends Activity {
                         Log.e("DEBUG", response);
                         try {
                             myObj = new JSONObject(response);
-                            classes = myObj.getJSONArray("Combos");
+                            JSONArray classes = myObj.getJSONArray("Combos");
                             for (int i = 0; i < classes.length(); i++) {
                                 JSONObject temp = classes.getJSONObject(i);
-                                adapter.add(new gClass(temp.optInt("id"), temp.optString("class"), temp.optString("professor")));
+                                classAdapter.add(new gClass(temp.optInt("id"), temp.optString("class"), temp.optString("professor")));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
-                        adapter.notifyDataSetChanged();
+                        classAdapter.notifyDataSetChanged();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -59,6 +62,36 @@ public class NoteSearcher extends Activity {
 
     }
 
+    private StringRequest getNotes() {
+        return new StringRequest(Request.Method.GET, "http://web.engr.oregonstate.edu/~braune/NormieNotes/JSON/notes.php?id="
+                + getIntent().getExtras().getInt("id"),
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // All this will work once the JSON service is set up
+                        Log.e("DEBUG", response);
+                        try {
+                            myObj = new JSONObject(response);
+                            JSONArray notes = myObj.getJSONArray("Notes");
+                            for (int i = 0; i < notes.length(); i++) {
+                                JSONObject temp = notes.getJSONObject(i);
+                                noteAdapter.add(new gNote(temp.optString("class"), temp.optString("professor"),
+                                        temp.optString("title"), "Cool Guy", temp.optString("note"), temp.optLong("timeVal")));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        noteAdapter.notifyDataSetChanged();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,16 +99,28 @@ public class NoteSearcher extends Activity {
         setContentView(R.layout.notesearcher);
 
         // Construct the data source
-        arrayOfUsers = new ArrayList<gClass>();
-
-        adapter = new ClassAdapter(this, arrayOfUsers);
-
         ListView listView = (ListView) findViewById(R.id.mylistview);
-        listView.setAdapter(adapter);
-
-
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        queue.add(getClasses());
+        if (getIntent().getExtras().getBoolean("specificClass")) {
+            arrayOfNotes = new ArrayList<gNote>();
+            noteAdapter = new NoteAdapter(this, arrayOfNotes);
+            listView.setAdapter(noteAdapter);
+            queue.add(getNotes());
+        } else {
+
+            arrayOfClasses = new ArrayList<gClass>();
+            classAdapter = new ClassAdapter(this, arrayOfClasses);
+            listView.setAdapter(classAdapter);
+            queue.add(getClasses());
+        }
+
+    }
+
+    public void classSelected(View view) {
+        Intent intent = new Intent(this, NoteSearcher.class);
+        intent.putExtra("specificClass", true);
+        intent.putExtra("id", (int) view.getTag());
+        startActivity(intent);
     }
 }

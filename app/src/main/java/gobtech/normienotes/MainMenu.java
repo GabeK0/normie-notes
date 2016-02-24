@@ -19,6 +19,8 @@ public class MainMenu extends Activity {
 
 
     public void searchClasses(View view) {
-        startActivity(new Intent(this, NoteSearcher.class));
+        Intent intent = new Intent(this, NoteSearcher.class);
+        intent.putExtra("specificClass", false);
+        startActivity(intent);
     }
 }

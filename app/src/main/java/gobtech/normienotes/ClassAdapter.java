@@ -33,6 +33,8 @@ public class ClassAdapter extends ArrayAdapter<gClass> {
         // Populate the data into the template view using the data object
         className.setText(thisClass.className);
         professor.setText(thisClass.professor);
+
+        convertView.setTag(thisClass.id);
         // Return the completed view to render on screen
         return convertView;
 
