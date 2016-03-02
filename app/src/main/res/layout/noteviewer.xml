@@ -8,7 +8,7 @@
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
         android:paddingBottom="2dp"
-        android:background="@drawable/gradientbg"
+        android:background="@drawable/normieheader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -21,7 +21,9 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/specifictitle"
                 style="@style/CoolFont"
+                android:textColor="#111"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Title Title"
@@ -29,6 +31,8 @@
 
             <TextView
                 style="@style/CoolFont"
+                android:id="@+id/specificauthor"
+                android:textColor="#111"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
@@ -42,10 +46,12 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/specificdate"
                 style="@style/CoolFont"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="01/01/16"
+                android:textColor="#111"
                 android:layout_gravity="right"
                 android:layout_weight="1"
                 android:textSize="25sp"/>
@@ -93,7 +99,23 @@
 
     </LinearLayout>
 
+    <ScrollView
+        android:layout_below="@+id/linearTop"
+        android:layout_above="@+id/linearBot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <TextView
+            style="@style/CoolFont"
+            android:textSize="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="fffffffffffffffff fffffffffffffffffffffffffffffffffffff"/>
+
+
+
+
+    </ScrollView>
 
     <ScrollView
         android:layout_below="@+id/linearTop"
@@ -118,7 +140,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:background="@drawable/gradientbg"
+        android:background="@drawable/normieheader"
         android:layout_alignParentBottom="true">
 
         <Button

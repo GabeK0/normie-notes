@@ -5,13 +5,14 @@
     <LinearLayout
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:background="@drawable/gradientbg"
+        android:background="@drawable/normiebg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
             style="@style/CoolFont"
+            android:textColor="#111"
             android:id="@+id/notetitle"
             android:fontFamily="sans-serif"
             android:layout_width="wrap_content"
@@ -23,7 +24,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:src="#eee" />
+            android:src="#111" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,6 +34,7 @@
             <TextView
                 android:id="@+id/noteauthor"
                 style="@style/CoolFont"
+                android:textColor="#111"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,6 +44,7 @@
             <TextView
                 android:id="@+id/notedate"
                 android:layout_weight="1"
+                android:textColor="#111"
                 style="@style/CoolFont"
                 android:textSize="25sp"
                 android:gravity="right"
@@ -57,7 +60,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:src="#eee"
+        android:src="#CB1A3B"
         android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

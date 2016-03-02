@@ -1,50 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:id="@+id/drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <TextView
+            android:gravity="center"
+            android:id="@+id/headertext"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            style="@style/CoolFont"
+            android:textColor="#111"
+            android:fontFamily="sans-serif"
+            android:text="Search Classes..."
+            android:textSize="45sp"
+            android:background="@drawable/normieheader"/>
 
-            <TextView
-                android:gravity="center"
-                android:id="@+id/headertext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/CoolFont"
-                android:textColor="#111"
-                android:fontFamily="sans-serif"
-                android:text="Search Classes..."
-                android:textSize="45sp"
-                android:background="@drawable/notesearchertopbg"/>
+        <ListView
+            android:id="@+id/mylistview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:src="#111"/>
+        </ListView>
 
-            <ListView
-                android:id="@+id/mylistview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </ListView>
+    </LinearLayout>
 
 
+    <!--<ListView-->
+    <!--android:id="@+id/left_drawer"-->
+    <!--android:layout_width="240dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_gravity="end"-->
+    <!--android:background="#111"-->
+    <!--android:choiceMode="singleChoice"-->
+    <!--android:divider="@android:color/transparent"-->
+    <!--android:dividerHeight="0dp" />-->
 
-        </LinearLayout>
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:background="#EDEDED"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Search..."
+            android:inputType="text"
+            android:textColor="#000000"
+            android:textColorHint="#000"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/refreshButton"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:text="Refresh" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="Sort by..."
+            android:textColor="#000000"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/newButton"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:text="New" />
+
+        <Button
+            android:id="@+id/popularButton"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:text="Popular" />
 
 
-    </RelativeLayout>
-
-
-
-
-
-
+    </LinearLayout>
 </android.support.v4.widget.DrawerLayout>

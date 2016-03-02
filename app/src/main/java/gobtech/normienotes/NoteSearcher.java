@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -98,17 +99,20 @@ public class NoteSearcher extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notesearcher);
 
+        TextView headerText = (TextView) findViewById(R.id.headertext);
+
         // Construct the data source
         ListView listView = (ListView) findViewById(R.id.mylistview);
         RequestQueue queue = Volley.newRequestQueue(this);
 
         if (getIntent().getExtras().getBoolean("specificClass")) {
+            headerText.setText("Search notes...");
             arrayOfNotes = new ArrayList<gNote>();
             noteAdapter = new NoteAdapter(this, arrayOfNotes);
             listView.setAdapter(noteAdapter);
             queue.add(getNotes());
         } else {
-
+            headerText.setText("Search classes...");
             arrayOfClasses = new ArrayList<gClass>();
             classAdapter = new ClassAdapter(this, arrayOfClasses);
             listView.setAdapter(classAdapter);
