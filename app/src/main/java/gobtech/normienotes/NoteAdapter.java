@@ -39,6 +39,8 @@ public class NoteAdapter extends ArrayAdapter<gNote> {
         title.setText(thisNote.getNoteTitle());
         author.setText("By " + thisNote.getAuthor());
         date.setText(dt.format(thisNote.getDate()));
+
+        convertView.setTag(position);
         // Return the completed view to render on screen
         return convertView;
 

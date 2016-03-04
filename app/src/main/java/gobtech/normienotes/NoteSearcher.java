@@ -3,8 +3,13 @@ package gobtech.normienotes;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,8 +36,14 @@ public class NoteSearcher extends Activity {
     //JSONArray classes;
     ArrayList<gClass> arrayOfClasses;
     ArrayList<gNote> arrayOfNotes;
+
+    private LinearLayout whyJustWhy;
+    private ListView listView;
+    private DrawerLayout drawer;
     ClassAdapter classAdapter;
     NoteAdapter noteAdapter;
+    private Boolean modeSpecific;
+    private EditText searchBox;
 
     private StringRequest getClasses() {
         return new StringRequest(Request.Method.GET, "http://web.engr.oregonstate.edu/~braune/NormieNotes/JSON/combos.php",
@@ -40,7 +51,7 @@ public class NoteSearcher extends Activity {
                     @Override
                     public void onResponse(String response) {
                         // All this will work once the JSON service is set up
-                        Log.e("DEBUG", response);
+                        //Log.e("DEBUG", response);
                         try {
                             myObj = new JSONObject(response);
                             JSONArray classes = myObj.getJSONArray("Combos");
@@ -70,7 +81,7 @@ public class NoteSearcher extends Activity {
                     @Override
                     public void onResponse(String response) {
                         // All this will work once the JSON service is set up
-                        Log.e("DEBUG", response);
+                        //Log.e("DEBUG", response);
                         try {
                             myObj = new JSONObject(response);
                             JSONArray notes = myObj.getJSONArray("Notes");
@@ -98,20 +109,23 @@ public class NoteSearcher extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notesearcher);
-
+        drawer = (DrawerLayout) findViewById(R.id.drawer);
+        whyJustWhy = (LinearLayout) findViewById(R.id.whyjustwhy);
         TextView headerText = (TextView) findViewById(R.id.headertext);
-
+        searchBox = (EditText) findViewById(R.id.searchbox);
         // Construct the data source
-        ListView listView = (ListView) findViewById(R.id.mylistview);
+        listView = (ListView) findViewById(R.id.mylistview);
         RequestQueue queue = Volley.newRequestQueue(this);
 
         if (getIntent().getExtras().getBoolean("specificClass")) {
+            modeSpecific = true;
             headerText.setText("Search notes...");
             arrayOfNotes = new ArrayList<gNote>();
             noteAdapter = new NoteAdapter(this, arrayOfNotes);
             listView.setAdapter(noteAdapter);
             queue.add(getNotes());
         } else {
+            modeSpecific = false;
             headerText.setText("Search classes...");
             arrayOfClasses = new ArrayList<gClass>();
             classAdapter = new ClassAdapter(this, arrayOfClasses);
@@ -122,9 +136,56 @@ public class NoteSearcher extends Activity {
     }
 
     public void classSelected(View view) {
-        Intent intent = new Intent(this, NoteSearcher.class);
-        intent.putExtra("specificClass", true);
-        intent.putExtra("id", (int) view.getTag());
-        startActivity(intent);
+        Intent intent;
+        drawer.closeDrawer(whyJustWhy);
+        if (!drawer.isDrawerOpen(whyJustWhy)) {
+            if (modeSpecific) {
+                intent = new Intent(this, NoteViewer.class);
+                intent.putExtra("note", arrayOfNotes.get((int) view.getTag()));
+            } else {
+                intent = new Intent(this, NoteSearcher.class);
+                intent.putExtra("specificClass", true);
+                intent.putExtra("id", (int) view.getTag());
+            }
+            startActivity(intent);
+        } else
+            drawer.closeDrawer(whyJustWhy);
+    }
+
+    public void searchEntered(View view) {
+        drawer.closeDrawer(whyJustWhy);
+        if (!searchBox.getText().toString().equals("")) {
+            String term = searchBox.getText().toString();
+            if (modeSpecific) {
+                ArrayList<gNote> searchNotes = new ArrayList<gNote>();
+                for (int i = 0; i < arrayOfNotes.size(); i++) {
+                    if (arrayOfNotes.get(i).getNoteTitle().contains(term) || arrayOfNotes.get(i).getAuthor().contains(term))
+                        searchNotes.add(arrayOfNotes.get(i));
+                }
+                noteAdapter = new NoteAdapter(this, searchNotes);
+                noteAdapter.notifyDataSetChanged();
+                listView.setAdapter(noteAdapter);
+            } else {
+                ArrayList<gClass> searchClasses = new ArrayList<gClass>();
+                for (int i = 0; i < arrayOfClasses.size(); i++) {
+                    if (arrayOfClasses.get(i).className.contains(term) || arrayOfClasses.get(i).professor.contains(term))
+                        searchClasses.add(arrayOfClasses.get(i));
+                }
+                classAdapter = new ClassAdapter(this, searchClasses);
+                classAdapter.notifyDataSetChanged();
+                listView.setAdapter(classAdapter);
+            }
+        } else {
+            if (modeSpecific) {
+                noteAdapter = new NoteAdapter(this, arrayOfNotes);
+                listView.setAdapter(noteAdapter);
+            } else {
+                classAdapter = new ClassAdapter(this, arrayOfClasses);
+                listView.setAdapter(classAdapter);
+            }
+
+        }
+
+
     }
 }

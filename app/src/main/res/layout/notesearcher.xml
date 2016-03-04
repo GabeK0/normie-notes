@@ -42,6 +42,7 @@
     <!--android:dividerHeight="0dp" />-->
 
     <LinearLayout
+        android:id="@+id/whyjustwhy"
         android:layout_width="150dp"
         android:layout_height="match_parent"
         android:layout_gravity="end"
@@ -49,6 +50,7 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/searchbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Search..."
@@ -56,6 +58,15 @@
             android:textColor="#000000"
             android:textColorHint="#000"
             android:textSize="25sp" />
+
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:onClick="searchEntered"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:text="Search" />
+
 
         <Button
             android:id="@+id/refreshButton"

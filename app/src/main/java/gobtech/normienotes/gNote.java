@@ -2,13 +2,14 @@ package gobtech.normienotes;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by gabrielk on 2/9/16.
  */
 
-public class gNote {
+public class gNote implements Serializable {
 
     private String className;
     private String professor;
