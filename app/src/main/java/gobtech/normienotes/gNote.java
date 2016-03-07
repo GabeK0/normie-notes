@@ -1,7 +1,5 @@
 package gobtech.normienotes;
 
-import android.util.Log;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -16,10 +14,11 @@ public class gNote implements Serializable {
     private String noteTitle;
     private String author;
     private String noteText;
+    private int type;
     private Date date;
     private long unixDate;
 
-    public gNote(String className, String professor, String noteTitle, String author, String noteText, long initDate) {
+    public gNote(String className, String professor, String noteTitle, String author, String noteText, long initDate, int type) {
         this.className = className;
         this.professor = professor;
         this.noteTitle = noteTitle;
@@ -27,9 +26,14 @@ public class gNote implements Serializable {
         this.noteText = noteText;
 
         this.unixDate = initDate;
-
         date = new Date(unixDate*1000);
 
+        this.type = type;
+
+    }
+
+    public int getType() {
+        return type;
     }
 
     public String getClassName() {

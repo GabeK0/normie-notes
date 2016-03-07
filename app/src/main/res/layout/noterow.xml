@@ -13,7 +13,7 @@
 
         <TextView
             style="@style/CoolFont"
-            android:textColor="#111"
+
             android:id="@+id/notetitle"
             android:fontFamily="sans-serif"
             android:layout_width="wrap_content"
@@ -25,7 +25,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:src="#111" />
+            android:src="#f0f0f0" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             <TextView
                 android:id="@+id/noteauthor"
                 style="@style/CoolFont"
-                android:textColor="#111"
+
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
             <TextView
                 android:id="@+id/notedate"
                 android:layout_weight="1"
-                android:textColor="#111"
+
                 style="@style/CoolFont"
                 android:textSize="25sp"
                 android:gravity="right"

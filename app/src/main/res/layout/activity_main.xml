@@ -4,8 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:background="#f0f0f0"
+    android:background="#333"
     tools:context="gobtech.normienotes.MainActivity">
+
+    <!--android:background="#f0f0f0"-->
 
     <gobtech.normienotes.SnowView
         android:layout_width="match_parent"
@@ -23,12 +25,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="15dp"
-            android:shadowColor="#000000"
+            android:shadowColor="#CB1A3B"
             android:shadowDx="0.0"
             android:shadowDy="0.0"
-            android:shadowRadius="2.0"
+            android:shadowRadius="3.0"
             android:text="NormieNotes"
-            android:textColor="#CF9BE8"
+            android:textColor="#fff"
             android:textSize="35sp"
             android:textStyle="bold" />
 
@@ -37,12 +39,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:shadowColor="#000000"
+            android:shadowColor="#CB1A3B"
             android:shadowDx="0.0"
             android:shadowDy="0.0"
-            android:shadowRadius="2.0"
+            android:shadowRadius="3.0"
             android:text="Login or Register"
-            android:textColor="#CF9BE8"
+            android:textColor="#fff"
             android:textSize="25sp"
             android:textStyle="normal" />
 

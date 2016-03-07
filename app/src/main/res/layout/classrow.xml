@@ -13,7 +13,7 @@
         <TextView
             android:id="@+id/classname"
             style="@style/CoolFont"
-            android:textColor="#222"
+
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         <TextView
             android:id="@+id/professorname"
             android:layout_weight="5"
-            android:textColor="#222"
+
             style="@style/CoolFont"
             android:textSize="30sp"
             android:layout_width="0dp"

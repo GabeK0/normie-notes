@@ -20,12 +20,12 @@ public class NoteViewer extends Activity {
         TextView title = (TextView) findViewById(R.id.specifictitle);
         TextView author = (TextView) findViewById(R.id.specificauthor);
         TextView date = (TextView) findViewById(R.id.specificdate);
-        TextView text = (TextView) findViewById(R.id.specifictext);
+        //TextView text = (TextView) findViewById(R.id.specifictext);
 
         title.setText(note.getNoteTitle());
         author.setText("By " + note.getAuthor());
         SimpleDateFormat dt = new SimpleDateFormat("MM-dd-yyyy");
         date.setText(dt.format(note.getDate()));
-        text.setText(note.getNoteText());
+        //text.setText(note.getNoteText());
     }
 }

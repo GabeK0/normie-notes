@@ -4,10 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -84,11 +82,11 @@ public class NoteSearcher extends Activity {
                         //Log.e("DEBUG", response);
                         try {
                             myObj = new JSONObject(response);
-                            JSONArray notes = myObj.getJSONArray("Notes");
+                            JSONArray notes = myObj.getJSONArray("Classes");
                             for (int i = 0; i < notes.length(); i++) {
                                 JSONObject temp = notes.getJSONObject(i);
                                 noteAdapter.add(new gNote(temp.optString("class"), temp.optString("professor"),
-                                        temp.optString("title"), "Cool Guy", temp.optString("note"), temp.optLong("timeVal")));
+                                        temp.optString("title"), "Cool Guy", temp.optString("note"), temp.optLong("timeVal"), temp.optInt("type")));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -137,7 +135,7 @@ public class NoteSearcher extends Activity {
 
     public void classSelected(View view) {
         Intent intent;
-        drawer.closeDrawer(whyJustWhy);
+
         if (!drawer.isDrawerOpen(whyJustWhy)) {
             if (modeSpecific) {
                 intent = new Intent(this, NoteViewer.class);
@@ -148,12 +146,15 @@ public class NoteSearcher extends Activity {
                 intent.putExtra("id", (int) view.getTag());
             }
             startActivity(intent);
-        } else
+        } else {
             drawer.closeDrawer(whyJustWhy);
+            hideKeyboard(this);
+        }
     }
 
     public void searchEntered(View view) {
         drawer.closeDrawer(whyJustWhy);
+        hideKeyboard(this);
         if (!searchBox.getText().toString().equals("")) {
             String term = searchBox.getText().toString();
             if (modeSpecific) {
@@ -176,16 +177,30 @@ public class NoteSearcher extends Activity {
                 listView.setAdapter(classAdapter);
             }
         } else {
-            if (modeSpecific) {
-                noteAdapter = new NoteAdapter(this, arrayOfNotes);
-                listView.setAdapter(noteAdapter);
-            } else {
-                classAdapter = new ClassAdapter(this, arrayOfClasses);
-                listView.setAdapter(classAdapter);
-            }
-
+            refresh(new View(this));
         }
 
 
+    }
+
+    private void refresh(View view) {
+        if (modeSpecific) {
+            noteAdapter = new NoteAdapter(this, arrayOfNotes);
+            listView.setAdapter(noteAdapter);
+        } else {
+            classAdapter = new ClassAdapter(this, arrayOfClasses);
+            listView.setAdapter(classAdapter);
+        }
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

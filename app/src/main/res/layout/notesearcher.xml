@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawer"
+    android:background="#333"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -15,7 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/CoolFont"
-            android:textColor="#111"
             android:fontFamily="sans-serif"
             android:text="Search Classes..."
             android:textSize="45sp"
@@ -70,6 +70,7 @@
 
         <Button
             android:id="@+id/refreshButton"
+            android:onClick="refresh"
             android:layout_width="120dp"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"

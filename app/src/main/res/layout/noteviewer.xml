@@ -23,7 +23,6 @@
             <TextView
                 android:id="@+id/specifictitle"
                 style="@style/CoolFont"
-                android:textColor="#111"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Title Title"
@@ -32,7 +31,6 @@
             <TextView
                 style="@style/CoolFont"
                 android:id="@+id/specificauthor"
-                android:textColor="#111"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
@@ -51,7 +49,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="01/01/16"
-                android:textColor="#111"
                 android:layout_gravity="right"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
@@ -100,44 +97,50 @@
 
     </LinearLayout>
 
-    <ScrollView
+    <!--<ScrollView-->
+        <!--android:layout_below="@+id/linearTop"-->
+        <!--android:layout_above="@+id/linearBot"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<TextView-->
+            <!--style="@style/CoolFont"-->
+            <!--android:textColor="#111"-->
+            <!--android:id="@+id/specifictext"-->
+            <!--android:textSize="15sp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:text="fffffffffffffffffff"/>-->
+
+
+
+
+    <!--</ScrollView>-->
+
+    <!--<ScrollView-->
+        <!--android:visibility="invisible"-->
+        <!--android:layout_below="@+id/linearTop"-->
+        <!--android:layout_above="@+id/linearBot"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<com.android.volley.toolbox.NetworkImageView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:scaleType="centerInside"-->
+            <!--android:src="@drawable/note1"/>-->
+
+
+    <!--</ScrollView>-->
+
+
+    <android.support.v4.view.ViewPager
         android:layout_below="@+id/linearTop"
         android:layout_above="@+id/linearBot"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <TextView
-            style="@style/CoolFont"
-            android:textColor="#111"
-            android:id="@+id/specifictext"
-            android:textSize="15sp"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:text="fffffffffffffffffff"/>
-
-
-
-
-    </ScrollView>
-
-    <ScrollView
-        android:visibility="invisible"
-        android:layout_below="@+id/linearTop"
-        android:layout_above="@+id/linearBot"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:scaleType="center"
-            android:src="@drawable/note1"/>
-
-
-
-
-    </ScrollView>
-
+    </android.support.v4.view.ViewPager>
 
     <LinearLayout
         android:id="@+id/linearBot"
