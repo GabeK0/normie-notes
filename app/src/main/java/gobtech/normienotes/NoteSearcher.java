@@ -85,8 +85,8 @@ public class NoteSearcher extends Activity {
                             JSONArray notes = myObj.getJSONArray("Classes");
                             for (int i = 0; i < notes.length(); i++) {
                                 JSONObject temp = notes.getJSONObject(i);
-                                noteAdapter.add(new gNote(temp.optString("class"), temp.optString("professor"),
-                                        temp.optString("title"), "Cool Guy", temp.optString("note"), temp.optLong("timeVal"), temp.optInt("type")));
+                                noteAdapter.add(new gNote(temp.optInt("id"), temp.optString("class"), temp.optString("professor"),
+                                        temp.optString("title"), temp.optString("user"), temp.optString("note"), temp.optInt("ups"), temp.optInt("downs"), temp.optLong("timeVal"), temp.optInt("type")));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -183,15 +183,6 @@ public class NoteSearcher extends Activity {
 
     }
 
-    private void refresh(View view) {
-        if (modeSpecific) {
-            noteAdapter = new NoteAdapter(this, arrayOfNotes);
-            listView.setAdapter(noteAdapter);
-        } else {
-            classAdapter = new ClassAdapter(this, arrayOfClasses);
-            listView.setAdapter(classAdapter);
-        }
-    }
 
     public static void hideKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -202,5 +193,22 @@ public class NoteSearcher extends Activity {
             view = new View(activity);
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public void toggleDrawer(View view) {
+        if (drawer.isDrawerOpen(whyJustWhy))
+            drawer.closeDrawer(whyJustWhy);
+        else
+            drawer.openDrawer(whyJustWhy);
+    }
+
+    public void refresh(View view) {
+        if (modeSpecific) {
+            noteAdapter = new NoteAdapter(this, arrayOfNotes);
+            listView.setAdapter(noteAdapter);
+        } else {
+            classAdapter = new ClassAdapter(this, arrayOfClasses);
+            listView.setAdapter(classAdapter);
+        }
     }
 }

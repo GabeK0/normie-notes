@@ -15,7 +15,7 @@
 
     <LinearLayout
         android:layout_width="350dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_centerInParent="true"
         android:orientation="vertical">
@@ -35,39 +35,39 @@
             android:textStyle="bold" />
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:shadowColor="#CB1A3B"
-            android:shadowDx="0.0"
-            android:shadowDy="0.0"
-            android:shadowRadius="3.0"
-            android:text="Login or Register"
-            android:textColor="#fff"
-            android:textSize="25sp"
-            android:textStyle="normal" />
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="5dp"-->
+            <!--android:shadowColor="#CB1A3B"-->
+            <!--android:shadowDx="0.0"-->
+            <!--android:shadowDy="0.0"-->
+            <!--android:shadowRadius="3.0"-->
+            <!--android:text="Login or Register"-->
+            <!--android:textColor="#fff"-->
+            <!--android:textSize="25sp"-->
+            <!--android:textStyle="normal" />-->
 
-        <EditText
-            android:fontFamily="sans-serif-thin"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/edittextborder"
-            android:hint="Username or email"
-            android:gravity="center_horizontal"
-            android:textSize="25sp" />
+        <!--<EditText-->
+            <!--android:fontFamily="sans-serif-thin"-->
+            <!--android:layout_width="300dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:background="@drawable/edittextborder"-->
+            <!--android:hint="Username or email"-->
+            <!--android:gravity="center_horizontal"-->
+            <!--android:textSize="25sp" />-->
 
-        <EditText
-            android:fontFamily="sans-serif-thin"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/edittextborder"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:textSize="25sp" />
+        <!--<EditText-->
+            <!--android:fontFamily="sans-serif-thin"-->
+            <!--android:layout_width="300dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center_horizontal"-->
+            <!--android:layout_marginBottom="15dp"-->
+            <!--android:background="@drawable/edittextborder"-->
+            <!--android:hint="Password"-->
+            <!--android:inputType="textPassword"-->
+            <!--android:textSize="25sp" />-->
 
         <Button
             android:layout_width="150dp"
@@ -75,7 +75,11 @@
             android:layout_gravity="center_horizontal"
             android:background="@drawable/edittextborder"
             android:onClick="submit"
-            android:text="Submit"
+            android:text="Search Notes"
             android:textAllCaps="false" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="55dp" />
     </LinearLayout>
 </RelativeLayout>

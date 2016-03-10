@@ -1,34 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawer"
-    android:background="#333"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#333">
 
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:gravity="center"
-            android:id="@+id/headertext"
+
+        <LinearLayout
+
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/CoolFont"
-            android:fontFamily="sans-serif"
-            android:text="Search Classes..."
-            android:textSize="45sp"
-            android:background="@drawable/normieheader"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <ListView
-            android:id="@+id/mylistview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/headertext"
+                style="@style/CoolFont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/normieheader"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:onClick="toggleDrawer"
+                android:text="Search Classes..."
+                android:textSize="45sp" />
 
-        </ListView>
+            <ListView
+                android:id="@+id/mylistview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    </LinearLayout>
+            </ListView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 
     <!--<ListView-->
@@ -46,61 +56,43 @@
         android:layout_width="150dp"
         android:layout_height="match_parent"
         android:layout_gravity="end"
-        android:background="#EDEDED"
-        android:orientation="vertical">
+        android:background="@drawable/normiebg"
+        android:orientation="vertical"
+        android:paddingTop="25dp">
 
         <EditText
             android:id="@+id/searchbox"
+            style="@style/CoolFont"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Search..."
             android:inputType="text"
-            android:textColor="#000000"
             android:textColorHint="#000"
             android:textSize="25sp" />
 
         <Button
+            style="@style/CoolFont"
             android:layout_width="120dp"
             android:layout_height="50dp"
-            android:onClick="searchEntered"
             android:layout_gravity="center_horizontal"
             android:layout_margin="5dp"
-            android:text="Search" />
+            android:background="@drawable/gbutton"
+            android:onClick="searchEntered"
+            android:text="Search"
+            android:textColor="#111" />
 
 
         <Button
             android:id="@+id/refreshButton"
+            style="@style/CoolFont"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:background="@drawable/gbutton"
             android:onClick="refresh"
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="5dp"
-            android:text="Refresh" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center"
-            android:text="Sort by..."
-            android:textColor="#000000"
-            android:textSize="25sp" />
-
-        <Button
-            android:id="@+id/newButton"
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="5dp"
-            android:text="New" />
-
-        <Button
-            android:id="@+id/popularButton"
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="5dp"
-            android:text="Popular" />
+            android:text="Refresh"
+            android:textColor="#111" />
 
 
     </LinearLayout>

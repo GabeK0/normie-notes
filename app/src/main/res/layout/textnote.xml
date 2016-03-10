@@ -5,6 +5,8 @@
 
 
     <TextView
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
         android:id="@+id/specifictext"
         style="@style/CoolFont"
         android:layout_width="match_parent"

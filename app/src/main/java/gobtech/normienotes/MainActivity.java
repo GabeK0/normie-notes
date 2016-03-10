@@ -14,6 +14,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void submit(View view) {
-        startActivity(new Intent(this, MainMenu.class));
+        //startActivity(new Intent(this, MainMenu.class));
+        Intent intent = new Intent(this, NoteSearcher.class);
+        intent.putExtra("specificClass", false);
+        startActivity(intent);
     }
 }
